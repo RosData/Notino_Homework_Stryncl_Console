@@ -22,6 +22,7 @@ namespace Notino_Homework_Stryncl
 
         public void SaveContent(string targetFileName, byte[] data)
         {
+            // POSt na nějake url
             throw new NotImplementedException();
         }
     }
