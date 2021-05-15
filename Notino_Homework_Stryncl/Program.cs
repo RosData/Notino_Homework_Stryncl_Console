@@ -24,16 +24,19 @@ namespace Notino_Homework_Stryncl
             // v reálu přes nějaké DI
             ProxyClientAPIFormatConvertor proxyClient = new ProxyClientAPIFormatConvertor();
             // podle typu storage
-            IBlobStorage storage = new BlobStorageFactory().CreateBlobStorage(storageType);
+            var factory = new BlobStorageFactory();
+            ISourceBlobStorage sourceStorage = factory.CreateBlobStorage(storageType);
+            IPersistBlobStorage persistBlobStorage = factory.CreatePersistBlobStorage(storageType);
+
             // podle ciloveho typu persist storage
-            ISerializedResultStorage serializedResultStorage = new SerializedResultStorageFactory().CreateSerializedResultStorage(targetFormat, storage);
+            ISerializedResultStorage serializedResultStorage = new SerializedResultStorageFactory().CreateSerializedResultStorage(targetFormat, sourceStorage, persistBlobStorage);
 
 
             string input;
 
             try
             {
-                input = storage.ReadAsString(sourceFileName);
+                input = sourceStorage.ReadAsString(sourceFileName);
 
                 DocToConvert docToConvert = new DocToConvert
                 {

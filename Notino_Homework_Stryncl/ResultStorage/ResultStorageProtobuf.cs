@@ -6,7 +6,7 @@ namespace Notino_Homework_Stryncl.ResultStorage
 {
     public class ResultStorageProtobuf : BaseResultStorage, ISerializedResultStorage
     {
-        public ResultStorageProtobuf(IBlobStorage storage):base(storage)
+        public ResultStorageProtobuf(ISourceBlobStorage storage, IPersistBlobStorage persistBlobStorage) :base(storage, persistBlobStorage)
         {            
         }
 

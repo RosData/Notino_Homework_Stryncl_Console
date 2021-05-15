@@ -6,16 +6,18 @@ namespace Notino_Homework_Stryncl.ResultStorage
 {
     public class BaseResultStorage
     {
-        private readonly IBlobStorage storage;
-        public BaseResultStorage(IBlobStorage storage)
+        private readonly ISourceBlobStorage storage;
+        private readonly IPersistBlobStorage persistBlobStorage;
+        public BaseResultStorage(ISourceBlobStorage storage, IPersistBlobStorage persistBlobStorage)
         {
             this.storage = storage;
+            this.persistBlobStorage = persistBlobStorage;
         }
-        
+
 
         protected void SaveContent(string targetFileName, byte[] data)
         {
-            this.storage.SaveContent(targetFileName, data);
+            this.persistBlobStorage.SaveContent(targetFileName, data);
         }
     }
 }

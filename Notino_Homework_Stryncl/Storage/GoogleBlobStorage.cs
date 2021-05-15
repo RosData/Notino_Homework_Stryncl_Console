@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Notino_Homework_Stryncl
 {
-    public class AzureBlobStorage : IBlobStorage
+    public class GoogleBlobStorage : ISourceBlobStorage, IPersistBlobStorage
     {
-        string IBlobStorage.ReadAsString(string filePathOrUrl)
+        public string ReadAsString(string filePathOrUrl)
         {
             throw new NotImplementedException();
         }

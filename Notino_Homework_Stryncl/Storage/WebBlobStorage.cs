@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Notino_Homework_Stryncl
 {
-    public class WebBlobStorage : IBlobStorage
+    public class WebBlobStorage : ISourceBlobStorage
     {
         private static HttpClient httpClient = new HttpClient();
 

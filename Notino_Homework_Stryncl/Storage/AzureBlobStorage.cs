@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Notino_Homework_Stryncl
 {
-    public class FileBlobStorage : IBlobStorage
+    public class AzureBlobStorage : ISourceBlobStorage, IPersistBlobStorage
     {
-        public string ReadAsString(string filePathOrUrl)
+        string ISourceBlobStorage.ReadAsString(string filePathOrUrl)
         {
-            return System.IO.File.ReadAllText(filePathOrUrl);
+            throw new NotImplementedException();
         }
 
         public void SaveContent(string targetFileName, byte[] data)
         {
-            System.IO.File.WriteAllBytes(targetFileName, data);
+            throw new NotImplementedException();
         }
     }
 }

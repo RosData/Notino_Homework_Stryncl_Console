@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Notino_Homework_Stryncl
 {
-    public class GoogleBlobStorage : IBlobStorage
+    public class FileBlobStorage : ISourceBlobStorage, IPersistBlobStorage
     {
         public string ReadAsString(string filePathOrUrl)
         {
-            throw new NotImplementedException();
+            return System.IO.File.ReadAllText(filePathOrUrl);
         }
 
         public void SaveContent(string targetFileName, byte[] data)
         {
-            throw new NotImplementedException();
+            System.IO.File.WriteAllBytes(targetFileName, data);
         }
     }
 }

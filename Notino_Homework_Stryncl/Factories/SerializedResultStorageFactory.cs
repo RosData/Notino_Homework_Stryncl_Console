@@ -7,14 +7,14 @@ namespace Notino_Homework_Stryncl
 {
     public class SerializedResultStorageFactory
     {
-        public ISerializedResultStorage CreateSerializedResultStorage(TargetFormatType targetFormat, IBlobStorage storage)
+        public ISerializedResultStorage CreateSerializedResultStorage(TargetFormatType targetFormat, ISourceBlobStorage storage, IPersistBlobStorage persistBlobStorage)
         {
             switch (targetFormat)
             {
                 case TargetFormatType.Json:
-                    return new ResultStorageText(storage);
+                    return new ResultStorageText(storage, persistBlobStorage);
                 case TargetFormatType.Protobuf:
-                    return new ResultStorageProtobuf(storage);
+                    return new ResultStorageProtobuf(storage, persistBlobStorage);
                 default:
                     throw new Exception("Neznámý");
             }

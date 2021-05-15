@@ -9,10 +9,9 @@ namespace Notino_Homework_Stryncl
     /// <summary>
     /// Uloží binární obsah dle implementace
     /// </summary>
-    public interface IBlobStorage
+    public interface ISourceBlobStorage
     {
         string ReadAsString(string filePathOrUrl);
-
-        void SaveContent(string targetFileName, byte[] data);
+        
     }
 }
